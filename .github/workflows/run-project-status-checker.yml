@@ -24,3 +24,7 @@ jobs:
         with:
           config_file_path: "github/workspace/status-checker-config.json"
           database_file_path: "github/workspace/status-checker-database.db"
+      - name: Commit & Push changes
+        uses: actions-js/push@v1.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
