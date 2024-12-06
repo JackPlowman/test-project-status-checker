@@ -18,9 +18,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Project Status Checker
         uses: JackPlowman/project-status-checker@v1.0.0
         with:
           config_file_path: "github/workspace/status-checker-config.json"
           database_file_path: "github/workspace/status-checker-database.db"
+      - name: Commit & Push changes
+        uses: actions-js/push@v1.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
