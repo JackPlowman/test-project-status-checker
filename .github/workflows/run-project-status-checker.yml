@@ -22,4 +22,5 @@ jobs:
       - name: Project Status Checker
         uses: JackPlowman/project-status-checker@v1.0.0
         with:
-          config_file_path:
+          config_file_path: "github/workspace/status-checker-config.json"
+          database_file_path: "github/workspace/status-checker-database.db"
