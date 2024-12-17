@@ -9,13 +9,13 @@ on:
 permissions:
   contents: read
   packages: read
-  statuses: write
-  security-events: write
 
 jobs:
   check-code-quality:
     name: Check Code Quality
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -23,10 +23,35 @@ jobs:
           fetch-depth: 0
       # Lint and Format everything
       - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v7.2.0
+        uses: super-linter/super-linter/slim@v7.2.1
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           LINTER_RULES_PATH: .github/super-linter-configurations
           YAML_ERROR_ON_WARNING: true
+
+  run-zizmor:
+    name: Check GitHub Actions with zizmor
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v4.2.0
+        with:
+          version: "latest"
+      - name: Run zizmor 🌈
+        run: uvx zizmor --format sarif . > results.sarif
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3.27.9
+        with:
+          sarif_file: results.sarif
+          category: zizmor

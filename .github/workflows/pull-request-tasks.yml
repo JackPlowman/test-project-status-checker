@@ -4,12 +4,13 @@ on:
   pull_request:
     types: [opened, edited, synchronize]
 
-permissions:
-  pull-requests: write
+permissions: {}
 
 jobs:
   labeller:
     name: Label Pull Request
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Label Pull Request

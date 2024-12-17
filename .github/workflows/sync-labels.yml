@@ -7,13 +7,14 @@ on:
     paths:
       - .github/other-configurations/labels.yml
 
-permissions:
-  contents: read
-  pull-requests: write
+permissions: {}
 
 jobs:
   configure-labels:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     name: Configure Labels
     steps:
       - name: Checkout
