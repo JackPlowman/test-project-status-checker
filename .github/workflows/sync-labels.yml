@@ -17,7 +17,7 @@ jobs:
       pull-requests: write
     name: Configure Labels
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
