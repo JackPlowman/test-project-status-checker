@@ -19,4 +19,4 @@ pre-commit:
     Zizmor Checks:
       run: just zizmor-check
     Pinact Verify:
-      run: just pinact-verify
+      run: just pinact-check

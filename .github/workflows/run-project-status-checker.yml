@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
       - name: Project Status Checker
-        uses: JackPlowman/project-status-checker@v1.0.0
+        uses: JackPlowman/project-status-checker@211cf96e37f0a948c52af6d4e6e1c7cea660ac3b # v1.0.0
         with:
           config_file_path: "github/workspace/status-checker-config.json"
           database_file_path: "github/workspace/status-checker-database.db"

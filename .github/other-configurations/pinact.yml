@@ -7,3 +7,5 @@ ignore_actions:
     ref: .*
   - name: github/codeql-action/.*
     ref: .*
+  - name: actions-js/push
+    ref: .*
