@@ -21,7 +21,7 @@ jobs:
       contents: write # For committing changes to the repository
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -31,6 +31,6 @@ jobs:
           config_file_path: "github/workspace/status-checker-config.json"
           database_file_path: "github/workspace/status-checker-database.db"
       - name: Commit & Push changes
-        uses: actions-js/push@5a7cbd780d82c0c937b5977586e641b2fd94acc5 # v1.5
+        uses: actions-js/push@968f4695ca558093eadb24ad83cc5891f47e0cdc # v1.6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
